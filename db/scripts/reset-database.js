@@ -29,15 +29,28 @@ async function resetDatabase() {
       );
     `);
 
-    // Seed the players table
-    await pool.query(`
-      INSERT INTO players (player_name, kda, favourite_weapon, best_map, average_windrate)
-      VALUES 
-        ('PlayerOne', 2.45, 'Sniper', 'Dust II', 55.00),
-        ('PlayerTwo', 1.85, 'Rifle', 'Inferno', 48.50),
-        ('PlayerThree', 3.10, 'SMG', 'Mirage', 72.30),
-        ('PlayerFour', 2.00, 'Shotgun', 'Nuke', 60.00);
-    `);
+// Seed the players table
+await pool.query(`
+  INSERT INTO players (player_name, kda, favourite_weapon, best_map, average_windrate)
+  VALUES 
+    ('xX_Gap_Xx', 2.34, 'The Kerblamminator 4000', 'Custom Map', 67.89),
+    ('mtrc', 1.76, 'Scout Shotgun', 'Badlands', 55.42),
+    ('DJ Dolly Parton', 2.81, 'M4A1-S', 'Dust II', 61.37),
+    ('Enraged_Midget', 3.25, 'Halo Reach - Battle Rifle', 'Valhalla', 72.11),
+    ('MachineHead99', 1.95, 'RPG', 'Shipment', 48.66),
+    ('Jackhamer', 2.43, 'AS VAL', 'Terminal', 57.98),
+    ('Suede', 1.25, 'a flower', 'Flower Garden', 33.67),
+    ('lukeuniverse', 3.02, 'AK-47', 'Mirage', 74.28),
+    ('Samus', 2.88, 'Intervention (MW2)', 'Rust', 69.47),
+    ('mrchickennoodles', 1.94, 'R-301', 'Kings Canyon', 52.34),
+    ('Kragulus the Painbringer', 2.10, 'I prefer knives', 'Inferno', 60.45),
+    ('Kim Lida', 3.56, 'Railgun - Quake Champions', 'Blood Covenant', 75.20),
+    ('Cheeselover69', 1.30, 'Spud Gun', 'Potato Farm', 41.99),
+    ('Bubble&Squeak', 2.18, 'Shotgun', 'Nuke', 56.78),
+    ('DaFais', 2.65, 'Rocket Launcher', 'Dust II', 63.12),
+    ('Ezee Ace', 3.45, 'MSMC (BO2)', 'Hijacked', 71.88),
+    ('Stryker', 2.74, 'Glock', 'Hanger', 68.55);
+`);
 
     console.log("Database reset successful");
   } catch (error) {
