@@ -1,6 +1,8 @@
 import { pool } from "../db/index.js";
 
-export async function fetchAllMaps() {}
+export async function fetchAllMaps() {
+  const result = await pool.query();
+}
 
 export async function fetchMapById() {}
 
