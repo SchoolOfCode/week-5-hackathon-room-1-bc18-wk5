@@ -16,7 +16,7 @@ async function resetDatabase() {
         kda DECIMAL(5, 2),
         favourite_weapon VARCHAR(255),
         best_map VARCHAR(255),
-        average_windrate DECIMAL(5, 2)
+        average_winrate DECIMAL(5, 2)
       );
     `);
 
@@ -24,14 +24,13 @@ async function resetDatabase() {
     await pool.query(`
       CREATE TABLE maps (
         id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-        map_name VARCHAR(255) NOT NULL,
-        description TEXT
+        map_name VARCHAR(255) NOT NULL
       );
     `);
 
-// Seed the players table
-await pool.query(`
-  INSERT INTO players (player_name, kda, favourite_weapon, best_map, average_windrate)
+    // Seed the players table
+    await pool.query(`
+  INSERT INTO players (player_name, kda, favourite_weapon, best_map, average_winrate)
   VALUES 
     ('xX_Gap_Xx', 2.34, 'The Kerblamminator 4000', 'Custom Map', 67.89),
     ('mtrc', 1.76, 'Scout Shotgun', 'Badlands', 55.42),
@@ -51,6 +50,27 @@ await pool.query(`
     ('Ezee Ace', 3.45, 'MSMC (BO2)', 'Hijacked', 71.88),
     ('Stryker', 2.74, 'Glock', 'Hanger', 68.55);
 `);
+
+    await pool.query(`
+    INSERT INTO maps (map_name)
+    VALUES 
+        ('Custom Map'),
+        ('Badlands'),
+        ('Valhalla'),
+        ('Shipment'),
+        ('Terminal'),
+        ('Flower Garden'),
+        ('Mirage'),
+        ('Rust'),
+        ('Kings Canyon'),
+        ('Inferno'),
+        ('Blood Covenant'),
+        ('Potato Farm'),
+        ('Nuke'),
+        ('Dust II'),
+        ('Hijacked'),
+        ('Hanger')
+  `);
 
     console.log("Database reset successful");
   } catch (error) {
