@@ -9,8 +9,9 @@ import {
 
 export async function getPlayers(req, res) {
   try {
-    const Players = await fetchAllPlayers();
-    res.status(200).json({ status: "success", data: Players });
+    const players = await fetchAllPlayers();
+    // console.log(players);
+    res.status(200).json({ status: "success", data: players });
   } catch (error) {
     res.status(500).json({ status: "error", message: error.message });
   }
