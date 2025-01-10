@@ -13,23 +13,23 @@ export async function fetchAllPlayers({
     query += " WHERE ";
     if (player_name) {
       params.push(player_name);
-      query += ` player_name = $${params.length}`;
+      (query += " player_name = $1"), [params.length];
     }
     if (kda) {
       params.push(kda);
-      query += ` kda = $${params.length}`;
+      query += " kda = $${params.length}";
     }
     if (favourite_weapon) {
       params.push(favourite_weapon);
-      query += ` favourite_weapon = $${params.length}`;
+      (query += " favourite_weapon = $1"), [params.length];
     }
     if (best_map) {
       params.push(best_map);
-      query += ` best_map = $${params.length}`;
+      (query += " best_map = $1"), [params.length];
     }
     if (average_winrate) {
       params.push(average_winrate);
-      query += ` average_winrate = $${params.length}`;
+      (query += " average_winrate = $1"), [params.length];
     }
   }
   const result = await pool.query(query, params);
