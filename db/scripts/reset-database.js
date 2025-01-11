@@ -44,22 +44,22 @@ async function resetDatabase() {
     INSERT INTO players (player_name, kda, favourite_weapon, best_map, average_winrate)
     VALUES 
         ('xX_Gap_Xx', 2.34, 'The Kerblamminator 4000', 'Custom Map', 70),
-        ('mtrc', 1.76, 'Scout Shotgun', 'Badlands', 55.42),
-        ('DJ Dolly Parton', 2.81, 'M4A1-S', 'Dust II', 61.37),
-        ('Enraged_Midget', 3.25, 'Halo Reach - Battle Rifle', 'Valhalla', 72.11),
-        ('MachineHead99', 1.95, 'RPG', 'Shipment', 48.66),
-        ('Jackhamer', 2.43, 'AS VAL', 'Terminal', 57.98),
-        ('Suede', 1.25, 'a flower', 'Flower Garden', 33.67),
-        ('lukeuniverse', 3.02, 'AK-47', 'Mirage', 74.28),
-        ('Samus', 2.88, 'Intervention (MW2)', 'Rust', 69.47),
-        ('mrchickennoodles', 1.94, 'R-301', 'Kings Canyon', 52.34),
-        ('Kragulus the Painbringer', 2.10, 'I prefer knives', 'Inferno', 60.45),
-        ('Kim Lida', 3.56, 'Railgun - Quake Champions', 'Blood Covenant', 75.20),
-        ('Cheeselover69', 1.30, 'Spud Gun', 'Potato Farm', 41.99),
-        ('Bubble&Squeak', 2.18, 'Shotgun', 'Nuke', 56.78),
-        ('DaFais', 2.65, 'Rocket Launcher', 'Dust II', 63.12),
-        ('Ezee Ace', 3.45, 'MSMC (BO2)', 'Hijacked', 71.88),
-        ('Stryker', 2.74, 'Glock', 'Hanger', 68.55);
+        ('mtrc', 1.76, 'Scout Shotgun', 'Badlands', 55),
+        ('DJ Dolly Parton', 2.81, 'M4A1-S', 'Dust II', 61),
+        ('Enraged_Midget', 3.25, 'Halo Reach - Battle Rifle', 'Valhalla', 72),
+        ('MachineHead99', 1.95, 'RPG', 'Shipment', 48),
+        ('Jackhamer', 2.43, 'AS VAL', 'Terminal', 57),
+        ('Suede', 1.25, 'a flower', 'Flower Garden', 33),
+        ('lukeuniverse', 3.02, 'AK-47', 'Mirage', 74),
+        ('Samus', 2.88, 'Intervention (MW2)', 'Rust', 69),
+        ('mrchickennoodles', 1.94, 'R-301', 'Kings Canyon', 52),
+        ('Kragulus the Painbringer', 2.10, 'I prefer knives', 'Inferno', 60),
+        ('Kim Lida', 3.56, 'Railgun - Quake Champions', 'Blood Covenant', 75),
+        ('Cheeselover69', 1.30, 'Spud Gun', 'Potato Farm', 41),
+        ('Bubble&Squeak', 2.18, 'Shotgun', 'Nuke', 56),
+        ('DaFais', 2.65, 'Rocket Launcher', 'Dust II', 63),
+        ('Ezee Ace', 3.45, 'MSMC (BO2)', 'Hijacked', 71),
+        ('Stryker', 2.74, 'Glock', 'Hanger', 68);
     `);
 
     await pool.query(`
