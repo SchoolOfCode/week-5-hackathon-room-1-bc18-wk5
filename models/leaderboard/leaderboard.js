@@ -1,4 +1,4 @@
-import { pool } from "../db/index.js";
+import { pool } from "../../db/index.js";
 
 export async function fetchLeaderboard() {
   const result = await pool.query(

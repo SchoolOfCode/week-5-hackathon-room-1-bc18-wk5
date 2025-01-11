@@ -1,4 +1,4 @@
-import { fetchLeaderboard } from "../models/leaderboard.js";
+import { fetchLeaderboard } from "../../models/leaderboard/leaderboard.js";
 
 export async function getLeaderboard(req, res) {
   try {

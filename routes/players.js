@@ -1,11 +1,9 @@
 import express from "express";
-import {
-  getPlayers,
-  getPlayerById,
-  createPlayer,
-  updatePlayerById,
-  deletePlayerById,
-} from "../controllers/players.js";
+import getPlayers from "../controllers/players/getPlayers.js";
+import getPlayerById from "../controllers/players/getPlayersById.js";
+import createPlayer from "../controllers/players/createPlayer.js";
+import updatePlayerById from "../controllers/players/updatePlayerById.js";
+import deletePlayerById from "../controllers/players/deletePlayerById.js";
 
 const router = express.Router();
 
