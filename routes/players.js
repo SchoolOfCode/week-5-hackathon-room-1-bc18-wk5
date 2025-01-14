@@ -11,6 +11,8 @@ router.get("/", getPlayers);
 router.get("/:id", getPlayerById);
 router.post("/", createPlayer);
 router.patch("/:id", updatePlayerById);
+router.patch("/:id/win", updateWinLoss);
+router.patch("/:id/loss", updateWinLoss);
 router.delete("/:id", deletePlayerById);
 
 export default router;
