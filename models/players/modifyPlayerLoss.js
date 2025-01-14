@@ -2,9 +2,8 @@ import { pool } from "../../db/index.js";
 
 export default async function modifyPlayerLoss(id) {
   try {
-    // Update losses
     const result = await pool.query(
-      "UPDATE players SET losses = losses + 1 WHERE id = $1 RETURNING *",
+      "UPDATE players SET losses = COALESCE(losses, 0) + 1 WHERE id = $1 RETURNING *",
       [id]
     );
     if (result.rows.length === 0) {
