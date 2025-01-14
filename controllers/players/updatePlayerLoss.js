@@ -1,4 +1,4 @@
-import modifyPlayerWin from "../../models/players/modifyPlayerLoss.js";
+import modifyPlayerLoss from "../../models/players/modifyPlayerLoss.js";
 
 export default async function updatePlayerLoss(req, res) {
   try {
