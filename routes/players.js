@@ -4,6 +4,7 @@ import getPlayerById from "../controllers/players/getPlayersById.js";
 import createPlayer from "../controllers/players/createPlayer.js";
 import updatePlayerById from "../controllers/players/updatePlayerById.js";
 import deletePlayerById from "../controllers/players/deletePlayerById.js";
+import updatePlayerWins from "../controllers/players/updatePlayerWins.js";
 
 const router = express.Router();
 
@@ -11,7 +12,7 @@ router.get("/", getPlayers);
 router.get("/:id", getPlayerById);
 router.post("/", createPlayer);
 router.patch("/:id", updatePlayerById);
-router.patch("/:id/win", updateWinLoss);
+router.patch("/win/:id", updatePlayerWins);
 router.patch("/:id/loss", updateWinLoss);
 router.delete("/:id", deletePlayerById);
 
