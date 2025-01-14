@@ -3,15 +3,8 @@ import modifyPlayerById from "../../models/players/modifyPlayerById.js";
 export default async function updatePlayerById(req, res) {
   try {
     const id = req.params.id;
-    const { player_name, kda, favourite_weapon, best_map, average_winrate } =
-      req.body;
-    if (
-      !player_name ||
-      !kda ||
-      !favourite_weapon ||
-      !best_map ||
-      !average_winrate
-    ) {
+    const { player_name, favourite_weapon, best_map } = req.body;
+    if (!player_name || !favourite_weapon || !best_map) {
       return res
         .status(400)
         .json({ status: "fail", message: "Missing required fields" });
@@ -19,10 +12,8 @@ export default async function updatePlayerById(req, res) {
     const player = await modifyPlayerById(
       id,
       player_name,
-      kda,
       favourite_weapon,
-      best_map,
-      average_winrate
+      best_map
     );
     if (!player) {
       return res
