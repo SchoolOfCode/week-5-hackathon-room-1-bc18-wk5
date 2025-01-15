@@ -1,21 +1,21 @@
-import fetchAllPlayers from "../../models/players/fetchAllPlayers.js";
+import fetchByHeading from "../../models/players/fetchByHeading.js";
 
 export default async function sortByHeading(req, res) {
   try {
     const {
       player_name,
-      kd,
+      kda,
       favourite_weapon,
       best_map,
       average_winrate,
       direction,
     } = req.query;
     const players = await fetchByHeading({
-      player_name,
-      kd,
-      favourite_weapon,
-      best_map,
-      average_winrate,
+      player_name: player_name === "true",
+      kda: kda === "true",
+      favourite_weapon: favourite_weapon === "true",
+      best_map: best_map === "true",
+      average_winrate: average_winrate === "true",
       direction,
     });
     res.status(200).json({ status: "success", data: players });
