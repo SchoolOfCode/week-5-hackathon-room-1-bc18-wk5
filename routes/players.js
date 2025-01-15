@@ -1,7 +1,7 @@
 import express from "express";
 import getPlayers from "../controllers/players/getPlayers.js";
 import getPlayerById from "../controllers/players/getPlayersById.js";
-import sortByHeading from "../controllers/players/sortByheading.js";
+import sortByHeading from "../controllers/players/sortByHeading.js";
 import createPlayer from "../controllers/players/createPlayer.js";
 import updatePlayerById from "../controllers/players/updatePlayerById.js";
 import deletePlayerById from "../controllers/players/deletePlayerById.js";
@@ -14,7 +14,7 @@ const router = express.Router();
 
 router.get("/", getPlayers);
 router.get("/:id", getPlayerById);
-router.get("/:heading", sortByHeading);
+router.get("/sort", sortByHeading);
 router.post("/", createPlayer);
 router.patch("/:id", updatePlayerById);
 router.patch("/win/:id", updatePlayerWins);

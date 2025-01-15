@@ -6,32 +6,35 @@ export default async function fetchByHeading({
   favourite_weapon,
   best_map,
   average_winrate,
+  direction = "ASC",
 }) {
   let query = "SELECT * FROM players";
-  const params = [];
-  if (player_name || kda || favourite_weapon || best_map || average_winrate) {
-    query += " ORDER BY ";
-    if (player_name) {
-      params.push(player_name);
-      (query += " player_name = $1"), [params.length];
-    }
-    if (kda) {
-      params.push(kd);
-      (query += " kd = $1"), [params.length];
-    }
-    if (favourite_weapon) {
-      params.push(favourite_weapon);
-      (query += " favourite_weapon = $1"), [params.length];
-    }
-    if (best_map) {
-      params.push(best_map);
-      (query += " best_map = $1"), [params.length];
-    }
-    if (average_winrate) {
-      params.push(average_winrate);
-      (query += " average_winrate = $1"), [params.length];
-    }
+  const orderClauses = [];
+
+  if (player_name) {
+    orderClauses.push("player_name");
   }
-  const result = await pool.query(query, params);
-  return result.rows;
+  if (kd) {
+    orderClauses.push("kd");
+  }
+  if (favourite_weapon) {
+    orderClauses.push("favourite_weapon");
+  }
+  if (best_map) {
+    orderClauses.push("best_map");
+  }
+  if (average_winrate) {
+    orderClauses.push("average_winrate");
+  }
+
+  if (orderClauses.length > 0) {
+    query += " ORDER BY " + orderClauses.join(", ") + " " + direction;
+  }
+
+  try {
+    const result = await pool.query(query);
+    return result.rows;
+  } catch (error) {
+    throw new Error(error.message);
+  }
 }
