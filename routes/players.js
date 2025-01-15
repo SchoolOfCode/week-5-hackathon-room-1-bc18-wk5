@@ -13,8 +13,8 @@ import updatePlayerDeath from "../controllers/players/updatePlayerDeath.js";
 const router = express.Router();
 
 router.get("/", getPlayers);
-router.get("/:id", getPlayerById);
 router.get("/sort", sortByHeading);
+router.get("/:id", getPlayerById);
 router.post("/", createPlayer);
 router.patch("/:id", updatePlayerById);
 router.patch("/win/:id", updatePlayerWins);
