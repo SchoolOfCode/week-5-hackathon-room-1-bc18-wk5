@@ -1,6 +1,9 @@
 import { pool } from "../../db/index.js";
 
 export default async function fetchPlayerById(id) {
-  const result = await pool.query("SELECT * FROM players WHERE id=$1", [id]);
-  return result.rows;
+  const poolInstance = await pool;
+  const result = await poolInstance.query("SELECT * FROM players WHERE id=$1", [
+    id,
+  ]);
+  return result.recordset;
 }

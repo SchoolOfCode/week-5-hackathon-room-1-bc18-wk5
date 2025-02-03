@@ -1,21 +1,37 @@
-// Import the pg (node-postgres) library
-import pg from "pg";
+import sql from "mssql";
+import "dotenv/config"; // Loads environment variables from .env
 
-// Retrieve the database connection string from environment variables
-const connectionString = process.env.DB_CONNECTION_STRING;
+const dbConfig = {
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  server: process.env.DB_SERVER,
+  port: parseInt(process.env.DB_PORT, 10) || 1433,
+  database: process.env.DB_NAME,
+  options: {
+    encrypt: process.env.DB_ENCRYPT === "true", // Convert string to boolean
+    trustServerCertificate: process.env.DB_TRUST_CERT === "true",
+  },
+};
 
-// Check if the connection string is not defined, and if so, throw an error
-if (!connectionString) {
-  throw new Error(
-    "No DB_CONNECTION_STRING defined. Did you load in your env variables?"
-  );
+// Validate required config values
+if (
+  !dbConfig.server ||
+  !dbConfig.user ||
+  !dbConfig.password ||
+  !dbConfig.database
+) {
+  console.error("❌ Missing database configuration. Check your .env file.");
+  process.exit(1);
 }
 
-// Export a new instance of pg.Pool, which will be used to interact with the PostgreSQL database
-export const pool = new pg.Pool({
-  // Pass the connection string to the pool, so it knows how to connect to your database
-  connectionString,
-  ssl: {
-    rejectUnauthorized: false, // Use with caution
-  },
-});
+// Create a connection pool
+export const pool = new sql.ConnectionPool(dbConfig)
+  .connect()
+  .then((pool) => {
+    console.log("✅ Connected to SQL Server");
+    return pool;
+  })
+  .catch((err) => {
+    console.error("❌ Database connection failed:", err);
+    process.exit(1);
+  });

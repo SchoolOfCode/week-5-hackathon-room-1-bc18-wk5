@@ -1,8 +1,12 @@
 import { pool } from "../../db/index.js";
 
 export async function fetchLeaderboard() {
-  const result = await pool.query(
-    "SELECT player_name, average_winrate FROM players ORDER BY average_winrate DESC"
-  );
-  return result.rows;
+  const poolInstance = await pool;
+  const result = await poolInstance
+    .request()
+    .query(
+      "SELECT player_name, average_winrate FROM players ORDER BY average_winrate DESC"
+    );
+
+  return result.recordset;
 }

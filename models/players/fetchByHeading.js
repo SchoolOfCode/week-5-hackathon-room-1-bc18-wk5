@@ -32,8 +32,9 @@ export default async function fetchByHeading({
   }
 
   try {
-    const result = await pool.query(query);
-    return result.rows;
+    const poolInstance = await pool;
+    const result = await poolInstance.query(query);
+    return result.recordset;
   } catch (error) {
     throw new Error(error.message);
   }

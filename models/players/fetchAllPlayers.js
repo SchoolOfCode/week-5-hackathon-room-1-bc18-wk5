@@ -22,6 +22,7 @@ export default async function fetchAllPlayers({
       (query += " best_map = $1"), [params.length];
     }
   }
-  const result = await pool.query(query, params);
-  return result.rows;
+  const poolInstance = await pool;
+  const result = await poolInstance.query(query, params);
+  return result.recordset;
 }
